@@ -4,16 +4,16 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: Loja
+      POSTGRES_DB: produtos
       POSTGRES_USER: postgres
     volumes:
       - ./data:/var/lib/postgresql/data
     ports:
-        - "5432:5432"
+        - "5433:5432"
   cmp_vendas:
     build: .
-    image: entityblackhawk/cmp-vendas:latest
+    image: entityblackhawk/cmp-produtos:latest
     ports:
-      - "8080:8080"
+      - "8081:8081"
     depends_on:
         - postgres
