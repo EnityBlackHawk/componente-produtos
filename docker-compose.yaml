@@ -1,9 +1,9 @@
 version: '3.8'
 services:
-  db_produtos:
+  db-produtos:
     image: postgres:latest
     networks:
-      - network_produtos
+      - network-produtos
     environment:
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: produtos
@@ -12,16 +12,18 @@ services:
       - ./data:/var/lib/postgresql/data
     ports:
         - "5433:5432"
-  cmp_produtos:
+  cmp-produtos:
     build: .
     image: entityblackhawk/cmp-produtos:latest
+    environment:
+        DATABASE_HOST_PORT: db-produtos:5432
     networks:
-        - network_produtos
+        - network-produtos
     ports:
       - "8081:8080"
     depends_on:
-        - db_produtos
+        - db-produtos
 
 networks:
-    network_produtos:
+    network-produtos:
         driver: bridge
