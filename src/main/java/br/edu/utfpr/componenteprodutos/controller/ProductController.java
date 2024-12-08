@@ -1,5 +1,6 @@
 package br.edu.utfpr.componenteprodutos.controller;
 
+import br.edu.utfpr.componenteprodutos.dto.ManyProductDTO;
 import br.edu.utfpr.componenteprodutos.dto.ProductDTO;
 import br.edu.utfpr.componenteprodutos.dto.create.ProductCreateDTO;
 import br.edu.utfpr.componenteprodutos.dto.update.UpdateProductDTO;
@@ -38,5 +39,16 @@ public class ProductController {
     public ProductDTO update(@PathVariable Long id, @RequestBody UpdateProductDTO product) {
         return productService.update(id, product);
     }
+
+    @PutMapping("/updateMany")
+    public List<ProductDTO> updateMany(@RequestBody List<UpdateProductDTO> products) {
+        return productService.updateMany(products);
+    }
+
+    @PostMapping("/findMany")
+    public List<ProductDTO> findMany(@RequestBody ManyProductDTO manyProductDTO) {
+        return productService.findMany(manyProductDTO);
+    }
+
 
 }

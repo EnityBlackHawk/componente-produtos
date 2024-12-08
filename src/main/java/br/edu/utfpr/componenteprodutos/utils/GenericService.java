@@ -33,9 +33,9 @@ public abstract class GenericService<
 
     public TDto create(TCreateDTO entity) {
 
-        if(repository.existsById(entity.getId())) {
-            throw new RuntimeException("Id already exists");
-        }
+//        if(repository.existsById(entity.getId())) {
+//            throw new RuntimeException("Id already exists");
+//        }
 
         TEntity result = repository.save(modelMapper.map(entity, entityClass));
         var dto = modelMapper.map(result, dtoClass);
