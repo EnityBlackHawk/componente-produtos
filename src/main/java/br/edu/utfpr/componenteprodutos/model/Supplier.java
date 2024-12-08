@@ -1,5 +1,6 @@
 package br.edu.utfpr.componenteprodutos.model;
 
+import br.edu.utfpr.componenteprodutos.utils.IEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_fornecedores")
-public class Supplier {
+public class Supplier implements IEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "supplierGen")
@@ -24,4 +25,5 @@ public class Supplier {
     @Getter
     @Column(name = "for_descricao")
     private String description;
+
 }

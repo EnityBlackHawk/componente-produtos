@@ -1,5 +1,6 @@
 package br.edu.utfpr.componenteprodutos.dto.create;
 
+import br.edu.utfpr.componenteprodutos.utils.IEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SupplierCreateDTO {
+public class SupplierCreateDTO implements IEntity<Long> {
 
     @Null
     private Long id;

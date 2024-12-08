@@ -2,6 +2,8 @@ package br.edu.utfpr.componenteprodutos.dto.create;
 
 import br.edu.utfpr.componenteprodutos.dto.SupplierDTO;
 import br.edu.utfpr.componenteprodutos.model.Supplier;
+import br.edu.utfpr.componenteprodutos.utils.IEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
@@ -9,7 +11,7 @@ import org.hibernate.validator.constraints.Range;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductCreateDTO {
+public class ProductCreateDTO implements IEntity<Long> {
 
     private Long code;
     @NotNull(message = "The description must be informed")
@@ -23,4 +25,9 @@ public class ProductCreateDTO {
     @NotNull(message = "The supplier must be informed")
     private SupplierDTO supplier;
 
+    @Override
+    @JsonIgnore
+    public Long getId() {
+        return code;
+    }
 }

@@ -1,5 +1,7 @@
 package br.edu.utfpr.componenteprodutos.model;
 
+import br.edu.utfpr.componenteprodutos.utils.IEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_produtos")
-public class Product {
+public class Product implements IEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "productGen")
@@ -41,4 +43,9 @@ public class Product {
     @JoinColumn(name = "fornecedor")
     private Supplier supplier;
 
+    @Override
+    @JsonIgnore
+    public Long getId() {
+        return code;
+    }
 }
